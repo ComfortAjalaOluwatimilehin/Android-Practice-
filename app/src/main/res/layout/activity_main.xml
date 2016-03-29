@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.comfort.ajala.calculator.MainActivity"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDarkDark">
+
+
+        <TextView
+
+            android:text="1"
+            style="@style/NumberStyles"
+            android:id="@+id/one"/>
+        <TextView
+
+            android:text="2"
+            style="@style/NumberStyles"
+            android:id="@+id/two"/>
+        <TextView
+
+            android:text="3"
+            style="@style/NumberStyles"
+            android:id="@+id/three"/>
+        <TextView
+            android:text="4"
+            style="@style/NumberStyles"
+            android:id="@+id/four"/>
+        <TextView
+
+            android:text="5"
+            style="@style/NumberStyles"
+            android:id="@+id/five"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+
+
+        <TextView
+
+            android:text="6"
+            style="@style/NumberStyles"
+            android:id="@+id/six"/>
+        <TextView
+
+            android:text="7"
+            style="@style/NumberStyles"
+            android:id="@+id/seven"/>
+        <TextView
+
+            android:text="8"
+            style="@style/NumberStyles"
+            android:id="@+id/eight"/>
+        <TextView
+            android:text="9"
+            style="@style/NumberStyles"
+            android:id="@+id/nine"/>
+        <TextView
+
+            android:text="0"
+            style="@style/NumberStyles"
+            android:id="@+id/zero"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary">
+
+
+        <TextView
+
+            android:text="="
+            style="@style/NumberStyles"
+            android:id="@+id/equals"/>
+        <TextView
+
+            android:text="+"
+            style="@style/NumberStyles"
+            android:id="@+id/plus"/>
+        <TextView
+
+            android:text="-"
+            style="@style/NumberStyles"
+            android:id="@+id/minus"/>
+        <TextView
+            android:text="/"
+            style="@style/NumberStyles"
+            android:id="@+id/divide"/>
+        <TextView
+
+            android:text="x"
+            style="@style/NumberStyles"
+            android:id="@+id/multiply"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor">
+
+        <EditText
+            style="@style/AnswerStyles"
+            android:id="@+id/numberone"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:fontFamily="sans-serif-light"
+            android:textSize="40dp"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/answer"
+
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="CLEAR"
+            android:onClick="onClick"
+            android:id="@+id/button"
+         />
+    </LinearLayout>
+
+
+
+</LinearLayout>
