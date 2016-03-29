@@ -39,8 +39,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         zero = (TextView) findViewById(R.id.zero);
         numberone = (EditText) findViewById(R.id.numberone);
         answer = (TextView) findViewById(R.id.answer);
+        NUMBERONE = NUMBERTWO = -1;
+
     }
 
+    private void reset(){
+        NUMBERONE = NUMBERTWO = -1;
+        OPERATOR = null;
+        numberone.setText("");
+        answer.setText("");
+    }
     @Override
     public void onClick(View v) {
 
@@ -48,11 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String val = ((TextView)findViewById(v.getId())).getText().toString();
         //check if the clear button was clicked
         if(v.getId() == R.id.button){
-
-           NUMBERONE = NUMBERTWO = -1;
-            OPERATOR = null;
-            numberone.setText("");
-            answer.setText("");
+            reset();
         }
         ///else check what if numbers, operators or equal sign was clicked and deal a planned
         else {
@@ -71,17 +75,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     //check if the operator is already selected to guaranty that the firstnumber is set already else set the first number and store
                     if (OPERATOR == null) {
-                        NUMBERONE = Integer.parseInt(val);
+                        //if numberone is set already
+                        if(NUMBERONE > -1){
+                          String temp = Integer.toString(NUMBERONE) + val;
+                            NUMBERONE =  Integer.parseInt(temp);
+                        }else{
+                        NUMBERONE = Integer.parseInt(val);}
                         //System.out.println("NUMBER ONE");
-                       // System.out.println(NUMBERONE);
-                        numberone.setText(val);
+                        // System.out.println(NUMBERONE);
+
+                        numberone.setText(Integer.toString(NUMBERONE));
                     }
                     ///else store the number in the second variable
                     else {
-                        NUMBERTWO = Integer.parseInt(val);
+                        if(NUMBERTWO > -1){
+                            String temp = Integer.toString(NUMBERTWO) + val;
+                            NUMBERTWO =  Integer.parseInt(temp);
+                        }else{
+                        NUMBERTWO = Integer.parseInt(val);}
                         //System.out.println("NUMBER TWO");
                         //System.out.println(NUMBERTWO);
-                        String finals = Integer.toString(NUMBERONE) + OPERATOR + NUMBERTWO;
+                        String finals = Integer.toString(NUMBERONE) + OPERATOR + Integer.toString(NUMBERTWO);
                         numberone.setText(finals);
 
                     }
@@ -97,31 +111,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case "=":
-                    double end = 0;
-//a switch within a switch -- switch inception :)..... do the maths based on the operator stored
-                    switch (OPERATOR) {
-                        case "+":
-                            end = (double)NUMBERONE + (double)NUMBERTWO;
-                            break;
-                        case "-":
-                            end =(double) NUMBERONE - (double)NUMBERTWO;
-                            break;
-                        case "x":
-                            end = (double)NUMBERONE * (double)NUMBERTWO;
-                            break;
-                        case "/":
-                            end =(double) NUMBERONE / (double)NUMBERTWO;
-                            break;
-                    }
-
-                    //System.out.println("END Expression: " + end);
-
-                    answer.setText(Double.toString(end));
-
+                   doMath();
                     break;
             }
         }
 
+    }
+
+    private void doMath(){
+        if (NUMBERONE >= 0 && NUMBERTWO >= 0 && !OPERATOR.isEmpty()) {
+            double end = 0;
+//a switch within a switch -- switch inception :)..... do the maths based on the operator stored
+            System.out.println("" + NUMBERONE + " " + NUMBERTWO);
+            switch (OPERATOR) {
+                case "+":
+                    end = (double) NUMBERONE + (double) NUMBERTWO;
+                    break;
+                case "-":
+                    end = (double) NUMBERONE - (double) NUMBERTWO;
+                    break;
+                case "x":
+                    end = (double) NUMBERONE * (double) NUMBERTWO;
+                    break;
+                case "/":
+                    end = (double) NUMBERONE / (double) NUMBERTWO;
+                    break;
+            }
+
+            //System.out.println("END Expression: " + end);
+
+
+            answer.setText(Double.toString(end));
+
+
+        }
     }
 
     //The END!!! THANKS UDACITY::: I WILL UPDATE THISE APP SOON...
